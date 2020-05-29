@@ -1,13 +1,29 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { createStore, applyMiddleware, compose } from 'redux';
+import { Provider  } from 'react-redux';
+import thunk from 'redux-thunk';
+
+import CssBaseline from '@material-ui/core/CssBaseline';
+import { ThemeProvider } from '@material-ui/core/styles';
+
+import theme from './theme';
 import './index.css';
-import App from './App';
+import combinedReducers from './reducers/index';
 import * as serviceWorker from './serviceWorker';
 
+import App from './containers/App/App';
+
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+let store = createStore(combinedReducers, composeEnhancers(applyMiddleware(thunk)));
+
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <Provider store={store}>
+    <ThemeProvider theme={theme}>
+        <CssBaseline />
+        <App/>
+    </ThemeProvider>
+  </Provider>,
   document.getElementById('root')
 );
 

@@ -1,12 +1,10 @@
 import { combineReducers } from 'redux';
-import posts from './posts';
-import categories from './categories';
-import comments from './comments';
+import users from './users';
+import questions from './questions';
 
 const combinedReducers = combineReducers({
-    categories,
-    posts,
-    comments,
+    users,
+    questions,
 })
 
 export default combinedReducers;
