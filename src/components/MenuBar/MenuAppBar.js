@@ -12,6 +12,7 @@ import FormGroup from '@material-ui/core/FormGroup';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 import Avatar from '@material-ui/core/Avatar';
+import PersonIcon from '@material-ui/icons/Person';
 
 import Nav from './Nav';
 
@@ -25,6 +26,10 @@ const useStyles = makeStyles((theme) => ({
   title: {
     flexGrow: 1,
   },
+  avatar: {
+    height: theme.spacing(4),
+    width: theme.spacing(4),
+  }
 }));
 
 const MenuAppBar = ({ user, handleLogout }) => {
@@ -46,13 +51,19 @@ const MenuAppBar = ({ user, handleLogout }) => {
     handleClose()
   };
 
+  const openLoginModal = () => {
+    // handleLogout();
+    // handleClose()
+    window.alert('open... now');
+  };
+
   return (
     <AppBar position="static">
       <Toolbar>
         <Typography variant="h6" className={classes.title}>
           Whould you rather?
         </Typography>
-        {user && (
+        {user ? (
           <div>
             <IconButton
               aria-label={`account of ${user.name}`}
@@ -61,8 +72,10 @@ const MenuAppBar = ({ user, handleLogout }) => {
               onClick={handleMenu}
               color="inherit"
             >
-              <Avatar alt={`avatar of ${user.name}`} src={ user.avatarURL } />
-              { user.name }
+              <Avatar alt={`avatar of ${user.name}`} src={ user.avatarURL } className={classes.avatar}/>
+              <Typography variant="h6">
+                { user.name }
+              </Typography>
             </IconButton>
             <Menu
               id="menu-appbar"
@@ -82,7 +95,25 @@ const MenuAppBar = ({ user, handleLogout }) => {
               <MenuItem onClick={onLogoutClick}>Logout</MenuItem>
             </Menu>
           </div>
-        )}
+        ) : (
+          <div>
+            <IconButton
+              aria-label="Login"
+              aria-controls="menu-appbar"
+              aria-haspopup="true"
+              onClick={openLoginModal}
+              color="inherit"
+            >
+              <Avatar 
+                alt="blank avatar" 
+                src="https://image.flaticon.com/icons/png/512/3003/3003078.png"
+                className={classes.avatar}
+              />
+              Login
+            </IconButton>
+          </div>
+        )
+      }
       </Toolbar>
       {user && (
         <Nav /> 
