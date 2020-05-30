@@ -4,3 +4,4 @@ export const setAuthedUser = (id) => ({
   type: AUTHED_USER_SET,
   payload: id,
 });
+

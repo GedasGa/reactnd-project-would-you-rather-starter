@@ -1,13 +1,13 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { Route, Switch, withRouter } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 
-import handleInitialData from '../../actions/shared';
+import { handleInitialData } from '../../actions/shared';
+import { setAuthedUser } from '../../actions/authedUser';
 
 import MenuAppBar from '../../components/MenuBar/MenuAppBar';
-import TabPanel from '../../components/TabPanel';
 
 import AddQuestion from '../AddQuestion';
 import Home from '../Home';
@@ -21,22 +21,26 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function App() {
+function App(props) {
   const classes = useStyles();
   const dispatch = useDispatch();
 
-  const users = useSelector(state => state.users);
-  const questions = useSelector(state => state.questions);
+  // const users = useSelector(state => state.users);
+  // const questions = useSelector(state => state.questions);
+  const user = useSelector(state => state.authedUser && state.users ? state.users[state.authedUser] : null);
 
   useEffect(() => {
     dispatch(handleInitialData());
   }, [dispatch]);
 
+  const handleLogout = () => {
+    dispatch(setAuthedUser(null));
+    props.history.push('/');
+  };
+
   return (
-    <Container maxWidth="md">
-      <MenuAppBar />
-      <TabPanel />
-      <Router>
+    <Container maxWidth="lg">
+      <MenuAppBar user={user} handleLogout={handleLogout} />
         <Switch>
           <Route path='/' exact component={Home} />
           <Route path='/leaderboard' component={Leaderboard} />
@@ -44,9 +48,8 @@ function App() {
           <Route path='/questions/:question_id' component={Question} />
           <Route component={NotFound} />
         </Switch>
-      </Router>
     </Container>
   );
 };
 
-export default App;
+export default withRouter(App);

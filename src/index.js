@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import { createStore, applyMiddleware, compose } from 'redux';
 import { Provider  } from 'react-redux';
 import thunk from 'redux-thunk';
+import { BrowserRouter as Router } from 'react-router-dom';
 
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { ThemeProvider } from '@material-ui/core/styles';
@@ -20,8 +21,10 @@ let store = createStore(combinedReducers, composeEnhancers(applyMiddleware(thunk
 ReactDOM.render(
   <Provider store={store}>
     <ThemeProvider theme={theme}>
+      <Router>
         <CssBaseline />
         <App/>
+      </Router>
     </ThemeProvider>
   </Provider>,
   document.getElementById('root')
