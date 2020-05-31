@@ -10,6 +10,7 @@ import MenuAppBar from '../../components/MenuBar/MenuAppBar';
 
 import AddQuestion from '../AddQuestion';
 import Home from '../Home';
+import Login from '../Login';
 import Leaderboard from '../Leaderboard/Leaderboard';
 import NotFound from '../NotFound';
 import Question from '../Question';
@@ -31,13 +32,17 @@ function App(props) {
   return (
     <Container maxWidth="lg">
       <MenuAppBar user={user} handleLogout={handleLogout} />
-        <Switch>
-          <Route path='/' exact component={Home} />
-          <Route path='/leaderboard' component={Leaderboard} />
-          <Route path='/add' component={AddQuestion} />
-          <Route path='/questions/:question_id' component={Question} />
-          <Route component={NotFound} />
-        </Switch>
+        {user ? (
+          <Switch>
+            <Route path='/' exact component={Home} />
+            <Route path='/leaderboard' component={Leaderboard} />
+            <Route path='/add' component={AddQuestion} />
+            <Route path='/questions/:question_id' component={Question} />
+            <Route component={NotFound} />
+          </Switch>
+        ) : (
+          <Login />
+        )}
     </Container>
   );
 };

@@ -23,6 +23,10 @@ const useStyles = makeStyles((theme) => ({
   avatar: {
     height: theme.spacing(4),
     width: theme.spacing(4),
+  },
+  link: {
+    textDecoration: 'none',
+    color: 'white',
   }
 }));
 
@@ -45,19 +49,13 @@ const MenuAppBar = ({ user, handleLogout }) => {
     handleClose()
   };
 
-  const openLoginModal = () => {
-    // handleLogout();
-    // handleClose()
-    window.alert('open... now');
-  };
-
   return (
     <AppBar position="static">
       <Toolbar>
         <Typography variant="h6" className={classes.title}>
           Whould you rather?
         </Typography>
-        {user ? (
+        {user && (
           <div>
             <IconButton
               aria-label={`account of ${user.name}`}
@@ -89,25 +87,7 @@ const MenuAppBar = ({ user, handleLogout }) => {
               <MenuItem onClick={onLogoutClick}>Logout</MenuItem>
             </Menu>
           </div>
-        ) : (
-          <div>
-            <IconButton
-              aria-label="Login"
-              aria-controls="menu-appbar"
-              aria-haspopup="true"
-              onClick={openLoginModal}
-              color="inherit"
-            >
-              <Avatar 
-                alt="blank avatar" 
-                src="https://image.flaticon.com/icons/png/512/3003/3003078.png"
-                className={classes.avatar}
-              />
-              Login
-            </IconButton>
-          </div>
-        )
-      }
+        )}
       </Toolbar>
       {user && (
         <Nav /> 
