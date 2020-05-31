@@ -11,7 +11,7 @@ import MenuAppBar from '../../components/MenuBar/MenuAppBar';
 
 import AddQuestion from '../AddQuestion';
 import Home from '../Home';
-import Leaderboard from '../Leaderboard';
+import Leaderboard from '../Leaderboard/Leaderboard';
 import NotFound from '../NotFound';
 import Question from '../Question';
 
