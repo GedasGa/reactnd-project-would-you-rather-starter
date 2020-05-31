@@ -7,7 +7,6 @@ export default function QuestionList(props) {
   
   const { questions } = props;
 
-
   return (
     <>
       { questions.length ? questions.map(question => (
