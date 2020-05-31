@@ -12,6 +12,10 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
     marginTop: theme.spacing(6),
   },
+  tabPanel: {
+    display: 'flex',
+    justifyContent: 'center',
+  }
 }));
 
 function a11yProps(index) {
@@ -44,10 +48,10 @@ export default function QuestionsTabs(props) {
         <Tab label="Answered Questions" {...a11yProps(0)} />
         <Tab label="Unanswered Questions" {...a11yProps(1)} />
       </Tabs>
-      <TabPanel value={value} index={0}>
+      <TabPanel value={value} index={0} className={classes.tabPanel}>
         <QuestionsList key={0} questions={answeredQuestions}/>
       </TabPanel>
-      <TabPanel value={value} index={1}>
+      <TabPanel value={value} index={1} className={classes.tabPanel}>
         <QuestionsList key={1} questions={unansweredQuestions}/>
       </TabPanel>
     </Paper>

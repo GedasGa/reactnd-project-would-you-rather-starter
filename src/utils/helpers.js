@@ -4,10 +4,10 @@ export function formatQuestion(author, question) {
 
   return {
     name,
+    avatarURL,
     id,
     timestamp,
     optionOne,
     optionTwo,
-    avatar: avatarURL
   }
 }
