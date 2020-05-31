@@ -8,8 +8,8 @@ export default function QuestionList(props) {
   return (
     <>
       { questions.length ? questions.map(question => (
-        <QuestionCard key={question} question={question} />
-      )) : <Typography> No polls here. Keep looking :) </Typography>
+        <QuestionCard key={question.id} question={question} />
+      )) : <Typography> No questions here. Check the other tab :) </Typography>
     }
     </>
   );
