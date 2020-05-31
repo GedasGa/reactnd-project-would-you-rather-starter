@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Login = (props) => {
+const Login = () => {
   const classes = useStyles();
   const dispatch = useDispatch();
 
@@ -33,10 +33,7 @@ const Login = (props) => {
     setUser(event.target.value);
   };
 
-  const handleLogin = () => {
-    dispatch(setAuthedUser(user));
-    props.history.push('/');
-  };
+  const handleLogin = () => dispatch(setAuthedUser(user));
 
   return (
     <Card className={classes.card}>
