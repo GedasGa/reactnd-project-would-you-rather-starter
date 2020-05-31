@@ -45,7 +45,7 @@ const AddQuestion = () => {
     setOptionTwo('');
   }
 
- return (
+ return user && (
   <Card className={classes.card}>
     <CardHeader
       avatar={<Avatar alt={`avatar of ${user.name}`} src={ user.avatarURL }/>}

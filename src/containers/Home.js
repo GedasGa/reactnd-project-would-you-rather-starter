@@ -20,7 +20,7 @@ const filterAndSortUnansweredQuestions = ((questions, user) =>
   Object.keys(questions)
     .filter(
       id =>
-        !questions[id].optionOne.votes.includes(user) ||
+        !questions[id].optionOne.votes.includes(user) &&
         !questions[id].optionTwo.votes.includes(user)
     )
     .sort((a,b) => questions[b].timestamp - questions[a].timestamp)
@@ -36,16 +36,14 @@ const getAndFormatQuestionsByIds = ((questions, users, quetionsIds) =>
   })
 );
 
-
 const Home = () => {
 
   const questions = useSelector(state => state.questions);
   const users = useSelector(state =>  state.users);
   const user = useSelector(state => state.authedUser && state.users ? state.users[state.authedUser] : null);
 
-
-  const answeredQuestionsIds = filterAndSortAnsweredQuestions(questions, user);
-  const unansweredQuestionsIds = filterAndSortUnansweredQuestions(questions, user);
+  const answeredQuestionsIds = filterAndSortAnsweredQuestions(questions, user && user.id);
+  const unansweredQuestionsIds = filterAndSortUnansweredQuestions(questions, user && user.id);
 
   const answeredQuestions = answeredQuestionsIds.length ? 
     getAndFormatQuestionsByIds(questions, users, answeredQuestionsIds) 

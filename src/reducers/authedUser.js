@@ -1,4 +1,4 @@
-import { AUTHED_USER_SET } from '../actions/authedUser'
+import { AUTHED_USER_SET } from '../actions/authedUser';
 
 const authedUser = (state = null, {type, payload}) => {
   switch (type) {
