@@ -25,8 +25,6 @@ export default function QuestionListItem(props) {
 
   const { question } = props;
 
-  console.log(question);
-
   return (
     <Card className={classes.card}>
       <CardHeader
@@ -57,7 +55,6 @@ export default function QuestionListItem(props) {
             type="submit"
             variant="contained"
             color="primary"
-            
           >
             Open question
           </Button>

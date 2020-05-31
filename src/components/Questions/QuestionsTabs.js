@@ -4,7 +4,7 @@ import Paper from '@material-ui/core/Paper';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 
-import TabPanel from './QuestionsTabPanel';
+import QuestionsTabPanel from './QuestionsTabPanel';
 import QuestionsList from './QuestionsList';
 
 const useStyles = makeStyles((theme) => ({
@@ -20,8 +20,8 @@ const useStyles = makeStyles((theme) => ({
 
 function a11yProps(index) {
   return {
-    id: `simple-tab-${index}`,
-    'aria-controls': `simple-tabpanel-${index}`,
+    id: `tab-${index}`,
+    'aria-controls': `tabpanel-${index}`,
   };
 }
 
@@ -41,20 +41,18 @@ export default function QuestionsTabs(props) {
       <Tabs
         value={value}
         onChange={handleChange}
-        indicatorColor="primary"
         textColor="primary"
         centered
       >
         <Tab label="Unanswered Questions" {...a11yProps(0)} />
         <Tab label="Answered Questions" {...a11yProps(1)} />
       </Tabs>
-      <TabPanel value={value} index={0} className={classes.tabPanel}>
+      <QuestionsTabPanel value={value} index={0} className={classes.tabPanel}>
         <QuestionsList questions={unansweredQuestions}/>
-      </TabPanel>
-      <TabPanel value={value} index={1} className={classes.tabPanel}>
+      </QuestionsTabPanel>
+      <QuestionsTabPanel value={value} index={1} className={classes.tabPanel}>
         <QuestionsList questions={answeredQuestions}/>
-      </TabPanel>
-
+      </QuestionsTabPanel>
     </Paper>
   );
 }

@@ -24,9 +24,9 @@ const Nav = () => {
   return (
     <div className={classes.root}>
       <AppBar position="static">
-          <Tabs aria-label="app navigation" centered>
+          <Tabs aria-label="app navigation" centered value={0}>
             <NavLink to='/' exact activeClassName={classes.active} className={classes.link}>
-              <Tab label="Home" />
+              <Tab label="Home" in />
             </NavLink>
             <NavLink to='/add' activeClassName={classes.active} className={classes.link}>
               <Tab label="New Question" />

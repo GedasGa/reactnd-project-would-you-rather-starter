@@ -8,13 +8,15 @@ export default function QuestionsTabPanel(props) {
     <div
       role="tabpanel"
       hidden={value !== index}
-      id={`simple-tabpanel-${index}`}
-      aria-labelledby={`simple-tab-${index}`}
+      id={`tabpanel-${index}`}
+      aria-labelledby={`tab-${index}`}
       {...other}
     >
       {value === index && (
         <Box p={3}>
+          <div>
           {children}
+          </div>
         </Box>
       )}
     </div>
