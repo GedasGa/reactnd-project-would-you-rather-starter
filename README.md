@@ -1,3 +1,20 @@
+
+# Would You Rather Project
+
+This is the Would You Rather is a web app that lets a user play the “Would You Rather?” The game goes like this: A user is asked a question in the form: “Would you rather [option A] or [option B] ?”. Answering "neither" or "both" is against the rules.
+
+In your app, users are able to answer questions, see which questions they haven’t answered, see how other people have voted, post questions, and see the ranking of users on the leaderboard.
+
+## Start Developing
+
+To get started developing right away:
+  - Clone this repository
+  - Navigate to the project root folder
+
+In a terminal window run the following commands:
+  - `npm ci`
+  - `npm start`
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
